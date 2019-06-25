@@ -1,0 +1,37 @@
+/**
+ * menu.scss
+ * Styles applied to dashboard menu items added via FlashToolkit.
+ */
+
+/**
+ * Imports
+ */
+@import 'mixins';
+@import 'variables';
+
+/**
+ * Styling begins
+ */
+ul.layout_data {
+	p.form-field {
+		margin: 15px 0;
+
+		span,
+		label,
+		select {
+			width: 100%;
+		}
+
+		label {
+			float: left;
+			font-weight: 600;
+		}
+
+		span.side {
+			color: #777;
+			display: block;
+			font-style: normal;
+			margin-bottom: 5px;
+		}
+	}
+}

@@ -1,0 +1,1 @@
+jQuery(function(t){t(document.body).on("init_tooltips",function(){var i={attribute:"data-tip",fadeIn:50,fadeOut:50,delay:200};t(".tips, .help_tip, .flash-toolkit-help-tip").tipTip(i),t(".parent-tips").each(function(){t(this).closest("a, th").attr("data-tip",t(this).data("tip")).tipTip(i).css("cursor","help")})}).trigger("init_tooltips")});

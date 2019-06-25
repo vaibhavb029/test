@@ -1,0 +1,564 @@
+/**
+ * everest-forms.scss
+ * Governs the general look and feel of EverestForms sections of sites using themes that do not
+ * integrate with EverestForms specifically.
+ */
+
+/**
+ * Imports
+ */
+@import 'mixins';
+@import 'variables';
+@import 'animation';
+@import 'fonts';
+@import 'colors';
+@import 'clearings';
+
+/**
+ * Global styles
+ */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	overflow: hidden;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+/**
+ * Utility classes
+ */
+.clear {
+	clear: both;
+}
+
+/**
+ * Main EverestForms styles
+ */
+.everest-forms {
+
+	* {
+		box-sizing: border-box;
+	}
+
+	.blockUI.blockOverlay {
+		position: relative;
+		@include loader();
+	}
+
+	.loader {
+		@include loader();
+	}
+
+	.evf-container {
+		margin-bottom: 30px;
+	}
+
+	input[type='text'],
+	input[type='date'],
+	input[type='date'],
+	input[type='datetime-local'],
+	input[type='email'],
+	input[type='file'],
+	input[type='image'],
+	input[type='month'],
+	input[type='number'],
+	input[type='password'],
+	input[type='range'],
+	input[type='search'],
+	input[type='tel'],
+	input[type='time'],
+	input[type='url'],
+	input[type='week'],
+	select,
+	textarea,
+	.StripeElement,
+	canvas.evf-signature-canvas {
+		width: 100%;
+		height: auto;
+		font-size: 14px;
+		box-shadow: none;
+		margin-bottom: 10px;
+		padding: 6px 12px;
+		color: $color-gray-darker;
+		border: 1px solid $color-gray-light;
+	}
+
+	input {
+		&:focus {
+			outline: none;
+			border: 1px solid $color-brand-primary;
+		}
+	}
+
+	.everest-forms-field-row {
+
+		&::before,
+		&::after {
+			content: '';
+			clear: both;
+			display: table;
+		}
+
+		&:last-child {
+			.everest-forms-field-sublabel {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.evf-field-container {
+		margin-bottom: 10px;
+
+		.evf-frontend-row {
+			display: flex;
+			flex-wrap: wrap;
+			margin-left: -15px;
+			margin-right: -15px;
+
+			.everest-forms-one-half {
+				width: 48%;
+				float: left;
+				margin-left: 4%;
+
+				&:first-child {
+					margin-left: 0;
+				}
+			}
+
+			.everest-forms-first {
+				margin-left: 0;
+			}
+
+			.evf-frontend-grid {
+				width: 100%;
+				padding-left: 15px;
+				padding-right: 15px;
+
+				&.evf-grid-2 {
+					flex: 0 0 50%;
+					max-width: 50%;
+				}
+
+				.evf-field {
+					display: block;
+					margin-bottom: 10px;
+
+					.evf-label-hide,
+					.everest-forms-sublabel-hide {
+						display: none;
+					}
+
+					ul {
+						margin: 0;
+						padding: 0;
+						list-style: none;
+
+						li {
+							margin: 0;
+							display: block;
+
+							label,
+							input {
+								margin-bottom: 0;
+								display: inline-block;
+								vertical-align: middle;
+							}
+
+							input[type='checkbox'],
+							input[type='radio'] {
+								padding: 0;
+								margin-right: 8px;
+							}
+
+							label {
+								font-weight: 500;
+								color: $color-gray-darker;
+							}
+						}
+					}
+
+					&.evf-field-title {
+						h3 {
+							margin: 25px 0;
+							font-size: 16px;
+							line-height: 1.5;
+						}
+					}
+
+					&.everest-forms-invalid {
+						label {
+							color: $color-alert-danger;
+							white-space: nowrap;
+						}
+
+						.select2-container,
+						input.input-text,
+						select,
+						textarea {
+							border-color: $color-alert-danger;
+						}
+					}
+
+					&.everest-forms-validated {
+						.select2-container,
+						input.input-text,
+						select,
+						textarea {
+							border-color: $color-alert-success;
+						}
+					}
+
+					::-webkit-input-placeholder {
+						line-height: normal;
+					}
+
+					:-moz-placeholder {
+						line-height: normal;
+					}
+
+					:-ms-input-placeholder {
+						line-height: normal;
+					}
+
+					&.evf-field-radio,
+					&.evf-field-checkbox,
+					&.evf-field-payment-multiple,
+					&.evf-field-payment-checkbox {
+						ul {
+							li {
+								display: flex;
+								align-items: center;
+							}
+						}
+					}
+				}
+			}
+
+			label {
+				display: block;
+				font-size: 14px;
+				font-weight: 600;
+				line-height: 1.7;
+				margin: 0 0 10px 0;
+				color: $color-gray-darker;
+
+				.required {
+					color: #f00;
+					font-weight: 700;
+					border: 0 !important;
+					text-decoration: none;
+				}
+
+				&.evf-error {
+					margin-top: 0;
+					margin-bottom: 10px;
+					font-weight: 400;
+					padding: 7px 10px;
+					border-radius: 3px;
+					display: inline-block;
+					border: 1px solid $color-alert-danger;
+					color: darken($color-alert-danger, 10%);
+					background-color: lighten($color-alert-danger, 35%);
+				}
+
+				&.everest-forms-field-sublabel {
+					font-size: 12px;
+					font-weight: 400;
+					line-height: 1.5;
+					margin: 0 0 10px 0;
+				}
+			}
+
+			input {
+
+				&[type='checkbox'],
+				&[type='radio'] {
+					width: 14px;
+					height: 14px;
+					background-color: $color-white;
+				}
+
+				&[type='checkbox'] {
+					appearance: checkbox;
+				}
+
+				&[type='radio'] {
+					appearance: radio;
+					border-radius: 10px;
+				}
+
+				&[type='checkbox']:checked {
+					background-color: $color-brand-primary;
+
+					&::before {
+						color: $color-white;
+						background-color: transparent;
+					}
+				}
+
+				&[type='radio']:checked {
+					&::before {
+						background-color: $color-brand-primary;
+					}
+				}
+
+				&::placeholder {
+					color: $input-color;
+				}
+
+			}
+
+			select {
+				appearance: menulist;
+			}
+
+			textarea {
+				width: 100%;
+				height: 120px;
+
+				&::placeholder {
+					color: $input-color;
+				}
+			}
+
+			.evf-field-description {
+				line-height: 1.7;
+				margin-bottom: 10px;
+			}
+		}
+	}
+
+	input[type='submit'],
+	button[type='submit'],
+	.everest-forms-part-button {
+		color: #555;
+		height: auto;
+		cursor: pointer;
+		background: none;
+		box-shadow: none;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 1.5;
+		padding: 10px 15px;
+		border-radius: 3px;
+		border: 1px solid #ccc;
+		background-color: #f7f7f7;
+
+		&:hover,
+		&:active {
+			outline: none;
+			color: #23282d;
+			background-color: #eee;
+		}
+
+		&:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+
+			&:hover {
+				color: #555;
+				background-color: #f7f7f7;
+			}
+		}
+	}
+
+	.layout-two {
+		label {
+			margin-bottom: 0;
+		}
+
+		.evf-field-checkbox,
+		.evf-field-radio {
+			label {
+				margin-bottom: 20px;
+			}
+		}
+
+		input,
+		select,
+		textarea,
+		canvas.evf-signature-canvas {
+			border-radius: 0;
+			border-top: none transparent;
+			border-right: none transparent;
+			border-left: none transparent;
+			border-bottom: 1px solid $color-gray;
+			height: 40px;
+			padding: 10px 0;
+
+			&:focus {
+				outline: none;
+				border-top: none transparent;
+				border-right: none transparent;
+				border-left: none transparent;
+			}
+		}
+
+		textarea {
+			height: 100px;
+		}
+	}
+
+	/**
+	 * Notices.
+	 */
+	.everest-forms-notice {
+		padding: 1em 3em;
+		margin: 0 0 2em;
+		position: relative;
+		background-color: $color-brand-primary;
+		color: $color-white;
+		border-radius: 5px;
+		@include clearfix();
+
+		&::before {
+			font-family: dashicons;
+			content: '\f348';
+			position: absolute;
+			top: 1em;
+			left: 1.5em;
+			color: inherit;
+		}
+
+		.button {
+			float: right;
+		}
+
+		p {
+			margin-bottom: 0;
+		}
+
+		li {
+			list-style: none outside !important; // Required for default theme compatibility
+			padding-left: 0 !important; // Required for default theme compatibility
+			margin-left: 0 !important; // Required for default theme compatibility
+		}
+	}
+
+	.everest-forms-notice--success {
+		background-color: $color-alert-success;
+
+		&::before {
+			content: '\f147';
+		}
+	}
+
+	.everest-forms-notice--error {
+		background-color: $color-alert-danger;
+
+		&::before {
+			content: '\f534';
+			color: inherit;
+		}
+
+		.everest-forms-notice-list {
+			margin: 0;
+			list-style: none outside;
+
+			.everest-forms-notice-list__item {
+				margin-bottom: 0.5em;
+			}
+			.everest-forms-notice-list__item:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+
+/* Gutenberg Block
+----------------------------------------------------------------------------- */
+
+.edit-post-visual-editor {
+	.everest-form-gutenberg-form-selector-wrap {
+		.components-placeholder__label {
+			margin-bottom: 0;
+
+			svg {
+				width: 75px;
+				height: 75px;
+				color: #7e3bd0;
+			}
+		}
+		.components-placeholder__instructions {
+			color: #23282d;
+			font-size: 1.3em;
+			font-weight: 600;
+		}
+		.components-placeholder__fieldset {
+			.components-base-control {
+				width: 100%;
+			}
+		}
+	}
+}
+
+div.evf-gutenberg-form-selector .evf-frontend-row input:disabled,
+div.evf-gutenberg-form-selector .evf-frontend-row textarea:disabled,
+div.evf-gutenberg-form-selector .evf-frontend-row select:disabled,
+div.evf-gutenberg-form-selector .evf-frontend-row button[type='submit']:disabled {
+	cursor: not-allowed;
+}
+
+/* Anti-spam Honeypot and reCAPTCHA Area
+----------------------------------------------------------------------------- */
+
+.evf-honeypot-container {
+	display: none !important;
+	position: absolute !important;
+	left: -9000px !important;
+}
+
+.evf-recaptcha-container {
+	clear: both;
+	margin-bottom: 30px;
+
+	.evf-error {
+		margin-top: 15px;
+		margin-bottom: 0;
+		font-weight: 300;
+		line-height: 1.7;
+		padding: 7px 10px;
+		border-radius: 3px;
+		display: inline-block;
+		color: darken($color-alert-danger, 10%);
+		border: 1px solid $color-alert-danger;
+		background-color: lighten($color-alert-danger, 35%);
+	}
+
+	&.recaptcha-hidden {
+		margin: 0;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.everest-forms {
+		.evf-field-container {
+			.evf-frontend-row {
+				flex-direction: column;
+				margin: 0;
+
+				.evf-frontend-grid {
+					margin-bottom: 30px;
+					padding: 0;
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+
+					&.evf-grid-2,
+					&.evf-grid-3 {
+						width: 100%;
+						max-width: 100%;
+					}
+				}
+			}
+		}
+
+		.evf-recaptcha-container {
+			margin: 25px 0;
+		}
+	}
+}

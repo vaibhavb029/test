@@ -1,0 +1,1 @@
+jQuery(function(e){e("select.show_if_sidebar").change(function(){"full-width"===e(this).val()||"full-width-center"===e(this).val()?e(this).parent().next("p.form-field").slideUp(300):e(this).parent().next("p.form-field").slideDown(300)}).change()});
